@@ -1,0 +1,33 @@
+{
+  "name": "IS Order",
+  "description": "Reorder homepage tiles in IS MUNI to your personal liking",
+  "version": "1.0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://is.muni.cz/auth/"
+      ],
+      "css": [
+        "tiles.css"
+      ],
+      "js": [
+        "tiles.js"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "https://is.muni.cz/auth/"
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "is-order@jirik.dev"
+    }
+  }
+}
