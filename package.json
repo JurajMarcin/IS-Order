@@ -1,0 +1,13 @@
+{
+  "name": "is-order",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "web-ext build --config=.web-ext-creds.mjs",
+    "sign": "web-ext sign --channel=unlisted --config=.web-ext-creds.mjs"
+  },
+  "author": "Juraj Marcin <juraj@jurajmarcin.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}
