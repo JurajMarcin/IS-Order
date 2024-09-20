@@ -1,0 +1,9 @@
+# Node
+node_modules/
+
+# web-ext
+dist/
+.web-ext-creds.mjs
+.amo-upload-uuid
+
+*.pem
