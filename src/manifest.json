@@ -1,7 +1,7 @@
 {
   "name": "IS Order",
   "description": "Reorder homepage tiles in IS MUNI to your personal liking",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "manifest_version": 3,
   "permissions": [
     "storage"
