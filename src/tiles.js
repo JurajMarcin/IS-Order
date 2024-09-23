@@ -1,4 +1,4 @@
-const STORAGE_KEY = "is-order-tileOrder"
+const STORAGE_KEY = "is-order-tileOrder";
 const LINK_ATTR = "data-is-order-tile-link";
 /* Classes */
 const GRID_CLASS = "is-order-tiles";
@@ -30,11 +30,16 @@ function getTileLink(tile) {
 function createDropTarget(attribute, placeFn) {
     const dropTarget = document.createElement("div");
     dropTarget.className = `${DROP_TARGET_CLASS} ${DROP_TARGET_CLASS}--${attribute}`;
+    dropTarget.addEventListener("dragenter", (e) => {
+        e.preventDefault();
+        dropTarget.classList.add(DROP_TARGET_ACTIVE_CLASS);
+    });
+    dropTarget.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        dropTarget.classList.remove(DROP_TARGET_ACTIVE_CLASS);
+    });
     dropTarget.addEventListener("dragover", (e) => {
         e.preventDefault();
-        document.querySelectorAll(`.${DROP_TARGET_ACTIVE_CLASS}`)
-            .forEach((el) => el.classList.remove(DROP_TARGET_ACTIVE_CLASS));
-        dropTarget.classList.add(DROP_TARGET_ACTIVE_CLASS);
     });
     dropTarget.addEventListener("drop", (e) => {
         e.preventDefault();
@@ -48,7 +53,7 @@ function createDropTarget(attribute, placeFn) {
 
 
 function main() {
-    const order = loadOrder()
+    const order = loadOrder();
 
     const nativeTilesContainer = document.querySelector("#dlazdice");
     if (!nativeTilesContainer) {
@@ -81,16 +86,16 @@ function main() {
             tilesGrid.classList.remove(GRID_DRAGGING_CLASS);
             document.querySelectorAll(`.${DROP_TARGET_ACTIVE_CLASS}`)
                 .forEach((el) => el.classList.remove(DROP_TARGET_ACTIVE_CLASS));
-        })
+        });
 
         const tile = document.createElement("div");
         tile.className = TILE_CLASS;
-        tile.setAttribute(LINK_ATTR, link)
+        tile.setAttribute(LINK_ATTR, link);
+        tile.appendChild(nativeTile);
 
         tile.appendChild(createDropTarget("before", (dragTarget) => tile.before(dragTarget)));
         tile.appendChild(createDropTarget("after", (dragTarget) => tile.after(dragTarget)));
 
-        tile.appendChild(nativeTile);
         tilesGrid.appendChild(tile);
     });
 
